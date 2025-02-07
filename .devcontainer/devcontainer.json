@@ -1,0 +1,90 @@
+{
+  "name": "app_devcontainer",
+  "dockerComposeFile": ["../docker-compose.yml", "docker-compose.yml"],
+  "service": "app",
+  "workspaceFolder": "/workspace/app",
+  // コンテナに追加する機能
+  "features": {
+    // Zshのインストール
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "configureZshAsDefaultShell": true,
+      "installZsh": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true,
+      "username": "node"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        // ファイル保存時にフォーマット処理を実行
+        "editor.formatOnSave": true,
+        // 各ファイルのデフォルトのフォーマッターを指定
+        "[javascript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[javascriptreact]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescriptreact]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[json]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[postcss]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[css]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        // ESLintの対象を設定
+        "eslint.validate": [
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact"
+        ],
+        "typescript.preferences.importModuleSpecifier": "non-relative",
+        // 保存時に実行されるコードアクションを有効に設定
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "typescript.preferences.preferTypeOnlyAutoImports": true,
+        "files.exclude": {
+          "**/.git": true,
+          "**/.svn": true,
+          "**/.hg": true,
+          "**/CVS": true,
+          "**/.DS_Store": true,
+          "**/Thumbs.db": true,
+          "templates/**": true,
+          "**/vite.config.js": true,
+          "**/vite.config.d.ts": true,
+          "**/tsconfig.node.tsbuildinfo": true,
+          "**/tsconfig.tsbuildinfo": true,
+          "**/.esbuild": true,
+          "**/.serverless": true,
+          "**/.sourcemaps": true,
+          "**/.swc": true,
+          "**/.turbo": true,
+          "**/.yarn": true,
+          "**/coverage": true,
+          "**/node_modules": true,
+          "apps/**/dist": true
+        }
+      },
+      // 拡張機能を追加
+      "extensions": [
+        "dbaeumer.vscode-eslint", // ESLint
+        "esbenp.prettier-vscode", // Prettier
+        "ms-vsliveshare.vsliveshare", // Live Share
+        "eamodio.gitlens", // GitLens
+        "alexcvzz.vscode-sqlite" // SQLite
+      ]
+    }
+  }
+}
