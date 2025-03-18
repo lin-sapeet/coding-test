@@ -1,8 +1,11 @@
 {
   "name": "app_devcontainer",
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,readonly"
+  ],
   "dockerComposeFile": ["../docker-compose.yml", "docker-compose.yml"],
   "service": "app",
-  "workspaceFolder": "/workspace/app",
+  "workspaceFolder": "/workspace",
   // コンテナに追加する機能
   "features": {
     // Zshのインストール
